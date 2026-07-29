@@ -1,5 +1,5 @@
 const socket = io(
-    "https://sublime-straining-jaws.ngrok-free.dev"
+    "https://cube-connect-4.onrender.com"
 );
 
 window.currentRoom = null;
