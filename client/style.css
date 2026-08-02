@@ -311,6 +311,8 @@ input{
 
 #menuToggle{
 
+    top:45px;
+
     width:130px;
 
     height:38px;
@@ -324,30 +326,32 @@ input{
 
 #statusBox{
 
-    width:260px;
+    width:140px;
 
-    padding:8px;
+    padding:5px;
 
-    margin:10px auto;
+    margin:8px auto;
 
-    border-radius:12px;
+    border-radius:10px;
 
 }
 
 
 #statusBox h2{
 
-    font-size:16px;
+    font-size:14px;
 
-    margin:5px 0;
+    margin:3px 0;
 
 }
 
 
 #statusBox p{
 
-    font-size:14px;
+    font-size:11px;
 
-    margin:5px;
+    margin:3px;
+
+}
 
 }
