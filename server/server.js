@@ -25,19 +25,27 @@ io.on("connection", (socket) => {
 
   socket.on("createRoom", (data) => {
 
+    console.log(
+     "作成ルール:",
+     data
+    );
+
     const roomId = roomManager.createRoom(socket.id);
 
     socket.join(roomId);
 
     games[roomId] = {
+
         turn:"red",
 
-        ruleMode:data.ruleMode || "free",
+        ruleMode:
+        data?.ruleMode || "free",
 
         players:{
         red:socket.id,
         blue:null
         }
+
     };
     
     socket.emit(
@@ -59,6 +67,11 @@ io.on("connection", (socket) => {
 
 
     socket.on("joinRoom", (roomId) => {
+
+            console.log(
+                "参加した部屋ルール:",
+                games[roomId].ruleMode
+            );
 
     const success =
         roomManager.joinRoom(
@@ -101,9 +114,9 @@ io.on("connection", (socket) => {
 
 });
 
- socket.on(
-    "placeStone",
-    (data)=>{
+    socket.on(
+     "placeStone",
+     (data)=>{
 
 
         console.log(
@@ -113,62 +126,62 @@ io.on("connection", (socket) => {
 
 
        if(!games[data.roomId]){
-    console.log(
-        "ゲーム情報なし:",
-        data.roomId
-    );
+            console.log(
+            "ゲーム情報なし:",
+            data.roomId
+            );
 
-    return;
-}
-
-
-console.log(
-    "現在のターン:",
-    games[data.roomId].turn
-);
-
-if(
-    games[data.roomId].turn !== data.color
-){
-    console.log(
-        "今はこの色の番ではありません"
-    );
-
-    return;
-}
-
-socket.emit(
-    "stoneAccepted",
-    data
-);
-
-io.to(data.roomId).emit(
-    "checkWin",
-    data
-);
-
-// ターン交代
-if(
-    games[data.roomId].turn === "red"
-){
-    games[data.roomId].turn = "blue";
-
-}else{
-
-    games[data.roomId].turn = "red";
-
-}
+        return;
+        }
 
 
-console.log(
-    "次のターン:",
-    games[data.roomId].turn
-);
+      console.log(
+      "現在のターン:",
+      games[data.roomId].turn
+      );
 
-io.to(data.roomId).emit(
-    "turnChange",
-    games[data.roomId].turn
-);
+       if(
+       games[data.roomId].turn !== data.color
+       )   {
+      console.log(
+          "今はこの色の番ではありません"
+      );
+
+      return;
+      }
+
+     socket.emit(
+      "stoneAccepted",
+      data
+      );
+
+      io.to(data.roomId).emit(
+      "checkWin",
+      data
+      );
+
+        // ターン交代
+      if(
+        games[data.roomId].turn === "red"
+      ){
+        games[data.roomId].turn = "blue";
+
+      }       else{
+
+        games[data.roomId].turn = "red";
+
+       }
+
+
+        console.log(
+        "次のターン:",
+        games[data.roomId].turn
+        );
+
+        io.to(data.roomId).emit(
+        "turnChange",
+        games[data.roomId].turn
+        );
 
         console.log(
             "送信先ルーム:",
@@ -183,12 +196,12 @@ io.to(data.roomId).emit(
         );
 
 
-    }
-);
+        }
+    );
 
     socket.on("disconnect", () => {
       console.log("プレイヤー退出:", socket.id);
-  });
+    });
 });
 
 const PORT = process.env.PORT || 3000;
