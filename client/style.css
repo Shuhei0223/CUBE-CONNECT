@@ -327,3 +327,17 @@ input{
 
 
 }
+
+@media(max-width:600px){
+
+section button{
+
+    width:48% !important;
+
+    display:inline-block !important;
+
+    margin:5px 0;
+
+}
+
+}
