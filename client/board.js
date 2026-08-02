@@ -889,6 +889,60 @@ socket.on(
 
 
 
+// ============================
+// CPUモード切替
+// ============================
+
+
+document
+.getElementById("cpuFree")
+.addEventListener(
+    "click",
+    ()=>{
+
+        gameMode = "cpu";
+
+        ruleMode = "free";
+
+
+        myColor = "red";
+
+        myTurn = true;
+
+
+        alert(
+            "CPU自由配置モード"
+        );
+
+    }
+);
+
+
+
+document
+.getElementById("cpuGravity")
+.addEventListener(
+    "click",
+    ()=>{
+
+        gameMode = "cpu";
+
+        ruleMode = "gravity";
+
+
+        myColor = "red";
+
+        myTurn = true;
+
+
+        alert(
+            "CPU重力ありモード"
+        );
+
+    }
+);
+
+
 // 画面サイズ対応
 
 window.addEventListener(
