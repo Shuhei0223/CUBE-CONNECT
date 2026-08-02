@@ -129,6 +129,12 @@ button{
 
 }
 
+#statusBox{
+
+    margin-top:20px;
+
+}
+
 input{
 
     width:200px;
@@ -144,11 +150,9 @@ input{
 
 body{
 
-   justify-content:flex-start;
+    justify-content:flex-start;
 
     padding-top:20px;
-
-    padding-top:10px;
 
     overflow:auto;
 
@@ -170,6 +174,7 @@ section{
 
     padding:12px;
 
+    position:relative;
 }
 
 
@@ -198,7 +203,11 @@ input{
 
 }
 
+#menu{
 
+    top:70px;
+
+}
 
 }
 
@@ -225,19 +234,35 @@ button:active{
 
     position:fixed;
 
-    top:10px;
+    top:15px;
 
-    right:10px;
+    right:15px;
 
     z-index:20;
 
-    width:120px;
+    width:160px;
 
-    height:40px;
+    height:50px;
+
+    font-size:18px;
+
+    border-radius:12px;
 
 }
 
+#menu{
 
+    position:fixed;
+
+    top:80px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:10;
+
+}
 
 .hidden{
 
