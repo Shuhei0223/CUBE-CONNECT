@@ -701,6 +701,13 @@ console.log(
 
 function cpuMove(){
 
+     if(gameOver){
+
+        return;
+
+    }
+
+
     let move;
 
 
