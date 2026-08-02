@@ -248,7 +248,7 @@ input{
    スマホ 小型メニュー
 ========================= */
 
-@media(max-width:786px){
+@media(max-width:600px){
 
 body{
 
@@ -261,7 +261,7 @@ body{
 
 h1{
 
-    font-size:20px;
+    font-size:22px;
 
     margin:10px;
 
@@ -270,7 +270,7 @@ h1{
 
 #menu{
 
-    top:55px;
+    top:60px;
 
     width:auto;
 
@@ -279,31 +279,31 @@ h1{
 
 section{
 
-    width:280px;
+    width:310px;
 
-    padding:8px;
+    padding:12px;
 
-    margin:6px auto;
+    margin:8px auto;
 
-    border-radius:12px;
+    border-radius:14px;
 
 }
 
 
 section h2{
 
-    font-size:18px;
+    font-size:20px;
 
-    margin:5px 0;
+    margin:6px 0;
 
 }
 
 
 section h3{
 
-    font-size:14px;
+    font-size:16px;
 
-    margin:5px 0;
+    margin:6px 0;
 
 }
 
@@ -315,13 +315,13 @@ button{
 
     width:46%;
 
-    height:35px;
+    height:42px;
 
-    font-size:14px;
+    font-size:16px;
 
-    margin:3px 1%;
+    margin:4px 1%;
 
-    border-radius:8px;
+    border-radius:9px;
 
 }
 
@@ -338,9 +338,9 @@ input{
 
     width:90%;
 
-    height:28px;
+    height:34px;
 
-    font-size:14px;
+    font-size:15px;
 
 }
 
@@ -350,24 +350,20 @@ input{
 
 #menuToggle{
 
-    width:120px;
+    width:140px;
 
-    height:35px;
+    height:42px;
 
-    font-size:14px;
-
-    top:10px;
-
-    right:10px;
+    font-size:15px;
 
 }
 
 
 #statusBox{
 
-    width:280px;
+    width:310px;
 
-    padding:8px;
+    padding:12px;
 
 }
 
