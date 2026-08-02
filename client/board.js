@@ -102,6 +102,8 @@ let ruleMode = "free";
 // free
 // gravity
 
+let cpuColor = "blue";
+
 // ============================
 // マス管理
 // ============================
@@ -513,27 +515,49 @@ sphere.material =
             false;
 */
 
-    // 盤面に保存
-   board[
-    target.userData.x
-][
-    target.userData.y
-][
-    target.userData.z
-] = myColor;
+const move = {
+
+    x: target.userData.x,
+    y: target.userData.y,
+    z: target.userData.z,
+
+    color: myColor
+
+};
+
+
+if(gameMode === "online"){
+
 
     socket.emit(
-    "placeStone",
-    {
-        roomId: window.currentRoom,
-        
-        x:target.userData.x,
-        y:target.userData.y,
-        z:target.userData.z,
-        
-      color:myColor
-    }
-);
+        "placeStone",
+        {
+
+            roomId: window.currentRoom,
+
+            ...move
+
+        }
+    );
+
+
+}
+else{
+
+
+    placeLocalStone(move);
+
+
+    myTurn = false;
+
+
+    setTimeout(
+        cpuMove,
+        500
+    );
+
+
+}
 
     console.log(
         "石を置いた場所",
@@ -581,6 +605,102 @@ function animate(){
 
 
 animate();
+
+function placeLocalStone(data){
+
+    const target =
+        cellObjects.find(
+            (cell)=>
+                cell.userData.x === data.x &&
+                cell.userData.y === data.y &&
+                cell.userData.z === data.z
+        );
+
+
+    if(!target)
+        return;
+
+
+    const sphere =
+        target.userData.sphere;
+
+
+    sphere.material =
+        new THREE.MeshStandardMaterial({
+
+            color:
+            data.color === "red"
+            ? 0xdd2222
+            : 0x2255dd
+
+        });
+
+
+    target.userData.empty = false;
+
+
+    board[data.x][data.y][data.z]
+        = data.color;
+
+}
+
+
+
+function cpuMove(){
+
+    const empty=[];
+
+
+    for(let x=0;x<4;x++){
+
+        for(let y=0;y<4;y++){
+
+            for(let z=0;z<4;z++){
+
+                if(board[x][y][z]===null){
+
+                    empty.push({
+                        x:x,
+                        y:y,
+                        z:z
+                    });
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+    if(empty.length===0)
+        return;
+
+
+    const move =
+        empty[
+            Math.floor(
+                Math.random()*empty.length
+            )
+        ];
+
+
+    placeLocalStone({
+
+        x:move.x,
+        y:move.y,
+        z:move.z,
+
+        color:cpuColor
+
+    });
+
+
+    myTurn = true;
+
+}
+
 
 socket.on(
     "playerColor",
