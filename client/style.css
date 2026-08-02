@@ -73,7 +73,7 @@ h1{
 
     position:fixed;
 
-    top:240px;
+    top:200px;
 
     left:50%;
 
@@ -250,78 +250,42 @@ input{
 
 @media(max-width:600px){
 
-body{
-
-    overflow:auto;
-
-    padding-bottom:10px;
-
-}
-
-
-h1{
-
-    font-size:22px;
-
-    margin:10px;
-
-}
-
-
-#menu{
-
-    top:60px;
-
-    width:auto;
-
-}
-
-
 section{
 
-    width:310px;
+    width:260px;
 
-    padding:12px;
+    padding:10px;
 
     margin:8px auto;
 
-    border-radius:14px;
+    border-radius:12px;
 
 }
 
 
 section h2{
 
-    font-size:20px;
-
-    margin:6px 0;
+    font-size:17px;
 
 }
 
 
 section h3{
 
-    font-size:16px;
-
-    margin:6px 0;
+    font-size:14px;
 
 }
 
-
-
-/* ボタン */
 
 button{
 
     width:46%;
 
-    height:42px;
+    height:38px;
 
-    font-size:16px;
+    font-size:15px;
 
     margin:4px 1%;
-
-    border-radius:9px;
 
 }
 
@@ -338,25 +302,24 @@ input{
 
     width:90%;
 
-    height:34px;
+    height:32px;
 
     font-size:15px;
 
 }
 
-
-
-/* メニュー表示ボタン */
 
 #menuToggle{
 
-    width:140px;
+    width:130px;
 
-    height:42px;
+    height:38px;
 
     font-size:15px;
 
 }
+
+
 
 
 #statusBox{
