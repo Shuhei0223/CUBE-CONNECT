@@ -362,3 +362,14 @@ input{
 }
 
 }
+
+
+
+
+@media(max-width:600px){
+
+body{
+    background:red;
+}
+
+}
