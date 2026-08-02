@@ -17,7 +17,11 @@ const camera = new THREE.PerspectiveCamera(
 
 
 // レンダラー
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({
+    antialias:true
+});
+
+renderer.shadowMap.enabled = true;
 
 renderer.setSize(
     window.innerWidth,
@@ -55,13 +59,35 @@ controls.enableDamping = true;
 
 
 // 光
-const light =
+const ambientLight =
     new THREE.AmbientLight(
-        0xffffff
+        0xffffff,
+        0.5
     );
 
-scene.add(light);
+scene.add(
+    ambientLight
+);
 
+
+const directionalLight =
+    new THREE.DirectionalLight(
+        0xffffff,
+        1
+    );
+
+directionalLight.position.set(
+    5,
+    10,
+    5
+);
+
+directionalLight.castShadow = true;
+
+
+scene.add(
+    directionalLight
+);
 
 
 // ============================
@@ -264,18 +290,24 @@ for(let x = 0; x < SIZE; x++){
 
             // 表示用の球
 
-            const geometry =
-                new THREE.SphereGeometry(
-                    0.18,
-                    16,
-                    16
-                );
+           const geometry =
+    new THREE.SphereGeometry(
+        0.25,
+        32,
+        32
+    );
 
 
-            const material =
-                new THREE.MeshBasicMaterial({
-                    color:0xffffff
-                });
+const material =
+    new THREE.MeshStandardMaterial({
+
+        color:0xffffff,
+
+        metalness:0.15,
+
+        roughness:0.25
+
+    });
 
 
             const sphere =
@@ -284,6 +316,8 @@ for(let x = 0; x < SIZE; x++){
                     material
                 );
 
+sphere.castShadow = true;
+sphere.receiveShadow = true;
 
            sphere.position.set(
              x * 0.7 - 1.05,
@@ -452,9 +486,8 @@ if(
 ){
 
 /*
-        sphere.material =
-            new THREE.MeshBasicMaterial({
-
+sphere.material =
+ new THREE.MeshStandardMaterial({
              color:
               myColor === "red"
               ? 0xff0000
@@ -615,8 +648,8 @@ socket.on(
                 target.userData.sphere;
 
 
-            sphere.material =
-                new THREE.MeshBasicMaterial({
+sphere.material =
+ new THREE.MeshStandardMaterial({
 
                     color:
                         data.color === "red"
@@ -666,9 +699,8 @@ socket.on(
                 target.userData.sphere;
 
 
-            sphere.material =
-    new THREE.MeshBasicMaterial({
-
+sphere.material =
+ new THREE.MeshStandardMaterial({
         color:
             data.color === "red"
             ? 0xff0000
