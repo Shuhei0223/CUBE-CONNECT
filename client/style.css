@@ -262,13 +262,13 @@ h1{
 
 section{
 
-    width:94%;
+    width:96%;
 
-    padding:22px;
+    padding:30px;
 
-    margin:15px auto;
+    margin:18px auto;
 
-    border-radius:18px;
+    border-radius:22px;
 
 }
 
@@ -291,9 +291,9 @@ section h3{
 
 button{
 
-    width:100%;
+    width:92%;
 
-    height:60px;
+    height:55px;
 
     font-size:20px;
 
