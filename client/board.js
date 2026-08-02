@@ -102,6 +102,10 @@ let ruleMode = "free";
 // free
 // gravity
 
+
+let onlineRuleMode = "free";
+
+
 let cpuColor = "blue";
 
 // ============================
@@ -1206,6 +1210,54 @@ socket.on(
     );
 
 }
+    }
+);
+
+
+// ============================
+// オンラインルール切替
+// ============================
+
+
+document
+.getElementById("onlineFree")
+.addEventListener(
+    "click",
+    ()=>{
+
+        gameMode = "online";
+
+        onlineRuleMode = "free";
+
+        ruleMode = "free";
+
+
+        alert(
+            "オンライン自由配置"
+        );
+
+    }
+);
+
+
+
+document
+.getElementById("onlineGravity")
+.addEventListener(
+    "click",
+    ()=>{
+
+        gameMode = "online";
+
+        onlineRuleMode = "gravity";
+
+        ruleMode = "gravity";
+
+
+        alert(
+            "オンライン重力あり"
+        );
+
     }
 );
 
