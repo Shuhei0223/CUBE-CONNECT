@@ -2,67 +2,141 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Cube Connect 4</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<title>
+Cube Connect 4
+</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<h1>Cube Connect 4</h1>
+
+<h1>
+Cube Connect 4
+</h1>
 
 
-<div id="menu">
+
+<!-- ======================
+     CPU対戦
+====================== -->
+
+<section>
+
+<h2>
+CPU対戦
+</h2>
+
+
+<h3>
+モード選択
+</h3>
+
 
 <button id="cpuFree">
-CPU 自由配置
+自由配置
 </button>
+
 
 <button id="cpuGravity">
-CPU 重力あり
+重力あり
 </button>
 
-</div>
+
+</section>
 
 
-<div>
-
-    <p>
-        名前
-    </p>
-
-    <input 
-        id="playerName"
-        type="text"
-        placeholder="名前を入力">
-
-
-</div>
 
 
 
 <hr>
 
-<h3>オンラインルール</h3>
+
+
+
+
+<!-- ======================
+     オンライン対戦
+====================== -->
+
+<section>
+
+<h2>
+オンライン対戦
+</h2>
+
+
+
+<h3>
+名前
+</h3>
+
+
+<input
+id="playerName"
+type="text"
+placeholder="名前を入力">
+
+
+
+
+
+<h3>
+モード選択
+</h3>
+
 
 <button id="onlineFree">
 自由配置
 </button>
 
+
 <button id="onlineGravity">
 重力あり
 </button>
 
-<div>
-
-    <h3>部屋を作成</h3>
-
-    <button id="createRoom">
-        部屋を作る
-    </button>
 
 
-</div>
+
+
+<h3>
+部屋作成
+</h3>
+
+
+<button id="createRoom">
+部屋を作る
+</button>
+
+
+
+
+
+<h3>
+参加
+</h3>
+
+
+<input
+id="roomId"
+type="text"
+placeholder="部屋番号">
+
+
+<button id="joinRoom">
+参加する
+</button>
+
+
+</section>
+
+
 
 
 
@@ -70,47 +144,47 @@ CPU 重力あり
 
 
 
-<div>
-
-    <h3>部屋に参加</h3>
-
-    <input
-        id="roomId"
-        type="text"
-        placeholder="部屋番号">
 
 
-    <button id="joinRoom">
-        参加する
-    </button>
+<!-- ======================
+     状態
+====================== -->
 
 
-</div>
+<section>
 
+<h2>
+状態
+</h2>
 
-
-<hr>
-
-
-
-<h3>状態</h3>
 
 <p id="status">
 サーバー接続待ち...
 </p>
 
 
-<h3 id="roomDisplay"></h3>
+<h3 id="roomDisplay">
+</h3>
+
+
+</section>
+
+
+
 
 
 
 <script src="/socket.io/socket.io.js"></script>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
+
 <script src="network.js"></script>
+
 
 <script src="board.js"></script>
 
