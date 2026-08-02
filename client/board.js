@@ -1015,6 +1015,22 @@ function getGravityPosition(x,z){
 
 }
 
+// オンラインルール受信
+
+socket.on(
+    "ruleMode",
+    (mode)=>{
+
+        ruleMode = mode;
+
+
+        console.log(
+            "オンラインルール:",
+            ruleMode
+        );
+
+    }
+);
 
 
 socket.on(

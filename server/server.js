@@ -23,24 +23,32 @@ const games = {};
 io.on("connection", (socket) => {
   console.log("プレイヤー接続:", socket.id);
 
-  socket.on("createRoom", () => {
+  socket.on("createRoom", (data) => {
 
     const roomId = roomManager.createRoom(socket.id);
 
     socket.join(roomId);
 
-   games[roomId] = {
-    turn:"red",
-    players:{
+    games[roomId] = {
+        turn:"red",
+
+        ruleMode:data.ruleMode || "free",
+
+        players:{
         red:socket.id,
         blue:null
-    }
-};
+        }
+    };
+    
+    socket.emit(
+     "ruleMode",
+     games[roomId].ruleMode
+    );
 
     socket.emit(
-    "playerColor",
-    "red"
-);
+        "playerColor",
+        "red"
+    );
 
     socket.emit(
         "roomCreated",
@@ -64,18 +72,22 @@ io.on("connection", (socket) => {
     socket.join(roomId);
 
 
-    // ★追加
-    games[roomId].players.blue =
+   
+        games[roomId].players.blue =
         socket.id;
 
+        socket.emit(
+            "ruleMode",
+            games[roomId].ruleMode
+        );
 
-    socket.emit(
+        socket.emit(
         "playerColor",
         "blue"
-    );
+        );
 
 
-    io.to(roomId).emit(
+        io.to(roomId).emit(
         "gameStart"
     );
 

@@ -4,13 +4,45 @@ const socket = io(
 
 window.currentRoom = null;
 
+let onlineRuleMode = "free";
+
 const status =
     document.getElementById("status");
 
 const roomDisplay =
     document.getElementById("roomDisplay");
 
+// オンラインルール設定
 
+document
+.getElementById("onlineFree")
+.addEventListener(
+"click",
+()=>{
+
+    onlineRuleMode = "free";
+
+
+    status.textContent =
+        "オンライン自由配置";
+
+});
+
+
+
+document
+.getElementById("onlineGravity")
+.addEventListener(
+"click",
+()=>{
+
+    onlineRuleMode = "gravity";
+
+
+    status.textContent =
+        "オンライン重力あり";
+
+});
 
 /*
  サーバー接続
@@ -34,7 +66,12 @@ document
 .addEventListener("click", () => {
 
 
-    socket.emit("createRoom");
+    socket.emit(
+    "createRoom",
+    {
+        ruleMode: onlineRuleMode
+    }
+);
 
 
 });
