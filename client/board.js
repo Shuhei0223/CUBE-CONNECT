@@ -635,6 +635,12 @@ animate();
 
 function placeLocalStone(data){
 
+    if(board[data.x][data.y][data.z] !== null){
+
+    return;
+
+}
+
     const target =
         cellObjects.find(
             (cell)=>
@@ -664,9 +670,15 @@ function placeLocalStone(data){
 
 
     target.userData.empty = false;
+    board[data.x][data.y][data.z] =
+    data.color;
 
 
-
+console.log(
+    "勝利判定:",
+    data,
+    board[data.x][data.y][data.z]
+);
 
 
     // 勝利判定
