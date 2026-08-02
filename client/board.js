@@ -103,9 +103,6 @@ let ruleMode = "free";
 // gravity
 
 
-let onlineRuleMode = "free";
-
-
 let cpuColor = "blue";
 
 // ============================
