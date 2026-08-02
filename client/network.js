@@ -163,3 +163,39 @@ socket.on(
 
     }
 );
+
+const menu =
+document.getElementById("menu");
+
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+
+menuToggle.addEventListener(
+"click",
+()=>{
+
+
+    menu.classList.toggle(
+        "hidden"
+    );
+
+
+    if(
+        menu.classList.contains("hidden")
+    ){
+
+        menuToggle.textContent =
+        "メニュー表示";
+
+    }
+    else{
+
+        menuToggle.textContent =
+        "メニュー非表示";
+
+    }
+
+
+});
