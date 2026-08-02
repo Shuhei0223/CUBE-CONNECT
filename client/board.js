@@ -700,98 +700,62 @@ console.log(
 
 function cpuMove(){
 
-    const empty=[];
-
-
-    for(let x=0;x<4;x++){
-
-        for(let y=0;y<4;y++){
-
-            for(let z=0;z<4;z++){
-
-                if(board[x][y][z]===null){
-
-                    empty.push({
-                        x:x,
-                        y:y,
-                        z:z
-                    });
-
-                }
-
-            }
-
-        }
-
-    }
-
-
-    if(empty.length===0)
-        return;
-
-
     let move;
 
 
-if(ruleMode === "gravity"){
+    // ============================
+    // ① CPUが勝てる場所を探す
+    // ============================
+
+    move =
+        findWinningMove(cpuColor);
 
 
-    const columns=[];
+    // ============================
+    // ② 相手の勝ちを防ぐ
+    // ============================
+
+    if(!move){
+
+        const enemy =
+            myColor;
 
 
-    for(let x=0;x<4;x++){
-
-        for(let z=0;z<4;z++){
-
-            if(board[x][3][z]===null){
-
-                columns.push({
-                    x:x,
-                    z:z
-                });
-
-            }
-
-        }
+        move =
+            findWinningMove(enemy);
 
     }
 
 
-    const column =
-        columns[
-            Math.floor(
-                Math.random()*columns.length
-            )
-        ];
+    // ============================
+    // ③ 中央優先
+    // ============================
+
+    if(!move){
+
+        move =
+            findCenterMove();
+
+    }
 
 
-    move={
+    // ============================
+    // ④ 最後はランダム
+    // ============================
 
-        x:column.x,
+    if(!move){
 
-        y:getGravityPosition(
-            column.x,
-            column.z
-        ),
+        move =
+            findRandomMove();
 
-        z:column.z
-
-    };
+    }
 
 
-}
-else{
+    if(!move){
 
+        return;
 
-    move =
-    empty[
-        Math.floor(
-            Math.random()*empty.length
-        )
-    ];
-
-
-}
+    }
 
 
     placeLocalStone({
@@ -815,6 +779,200 @@ else{
 // ============================
 // 重力処理
 // ============================
+
+function findWinningMove(color){
+
+
+    for(let x=0;x<4;x++){
+
+        for(let y=0;y<4;y++){
+
+            for(let z=0;z<4;z++){
+
+
+                let checkY = y;
+
+
+                if(ruleMode === "gravity"){
+
+                    checkY =
+                    getGravityPosition(
+                        x,
+                        z
+                    );
+
+
+                    if(checkY !== y){
+
+                        y = y;
+
+                    }
+
+                }
+
+
+                if(board[x][checkY][z] === null){
+
+
+                    board[x][checkY][z] = color;
+
+
+                    const win =
+                        checkWin({
+
+                            x:x,
+                            y:checkY,
+                            z:z,
+                            color:color
+
+                        });
+
+
+                    board[x][checkY][z] = null;
+
+
+                    if(win){
+
+                        return {
+
+                            x:x,
+                            y:checkY,
+                            z:z
+
+                        };
+
+                    }
+
+                }
+
+
+            }
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+function findCenterMove(){
+
+
+    const centers = [
+
+        {x:1,z:1},
+        {x:1,z:2},
+        {x:2,z:1},
+        {x:2,z:2}
+
+    ];
+
+
+    for(const pos of centers){
+
+
+        if(ruleMode === "gravity"){
+
+
+            const y =
+            getGravityPosition(
+                pos.x,
+                pos.z
+            );
+
+
+            if(y !== -1){
+
+                return {
+
+                    x:pos.x,
+                    y:y,
+                    z:pos.z
+
+                };
+
+            }
+
+
+        }
+
+
+        else{
+
+
+            if(board[pos.x][1][pos.z]===null){
+
+                return {
+
+                    x:pos.x,
+                    y:1,
+                    z:pos.z
+
+                };
+
+            }
+
+        }
+
+
+    }
+
+
+    return null;
+
+}
+
+function findRandomMove(){
+
+
+    const empty=[];
+
+
+    for(let x=0;x<4;x++){
+
+        for(let y=0;y<4;y++){
+
+            for(let z=0;z<4;z++){
+
+
+                if(board[x][y][z]===null){
+
+
+                    empty.push({
+
+                        x:x,
+                        y:y,
+                        z:z
+
+                    });
+
+
+                }
+
+
+            }
+
+        }
+
+    }
+
+
+    if(empty.length===0){
+
+        return null;
+
+    }
+
+
+    return empty[
+        Math.floor(
+            Math.random()*empty.length
+        )
+    ];
+
+}
 
 function getGravityPosition(x,z){
 
