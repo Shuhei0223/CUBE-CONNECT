@@ -515,16 +515,43 @@ sphere.material =
             false;
 */
 
+let px =
+    target.userData.x;
+
+let py =
+    target.userData.y;
+
+let pz =
+    target.userData.z;
+
+
+if(ruleMode === "gravity"){
+
+    py =
+    getGravityPosition(
+        px,
+        pz
+    );
+
+
+    if(py === -1){
+
+        return;
+
+    }
+
+}
+
+
 const move = {
 
-    x: target.userData.x,
-    y: target.userData.y,
-    z: target.userData.z,
+    x:px,
+    y:py,
+    z:pz,
 
-    color: myColor
+    color:myColor
 
 };
-
 
 if(gameMode === "online"){
 
@@ -678,12 +705,68 @@ function cpuMove(){
         return;
 
 
-    const move =
-        empty[
+    let move;
+
+
+if(ruleMode === "gravity"){
+
+
+    const columns=[];
+
+
+    for(let x=0;x<4;x++){
+
+        for(let z=0;z<4;z++){
+
+            if(board[x][3][z]===null){
+
+                columns.push({
+                    x:x,
+                    z:z
+                });
+
+            }
+
+        }
+
+    }
+
+
+    const column =
+        columns[
             Math.floor(
-                Math.random()*empty.length
+                Math.random()*columns.length
             )
         ];
+
+
+    move={
+
+        x:column.x,
+
+        y:getGravityPosition(
+            column.x,
+            column.z
+        ),
+
+        z:column.z
+
+    };
+
+
+}
+else{
+
+
+    move =
+    empty[
+        Math.floor(
+            Math.random()*empty.length
+        )
+    ];
+
+
+}
 
 
     placeLocalStone({
@@ -700,6 +783,31 @@ function cpuMove(){
     myTurn = true;
 
 }
+
+
+
+
+// ============================
+// 重力処理
+// ============================
+
+function getGravityPosition(x,z){
+
+    for(let y = 0; y < 4; y++){
+
+        if(board[x][y][z] === null){
+
+            return y;
+
+        }
+
+    }
+
+
+    return -1;
+
+}
+
 
 
 socket.on(
