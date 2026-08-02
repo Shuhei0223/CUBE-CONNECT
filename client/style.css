@@ -324,10 +324,30 @@ input{
 
 #statusBox{
 
-    width:100px;
+    width:260px;
 
-    padding:10px;
+    padding:8px;
+
+    margin:10px auto;
+
+    border-radius:12px;
 
 }
+
+
+#statusBox h2{
+
+    font-size:16px;
+
+    margin:5px 0;
+
+}
+
+
+#statusBox p{
+
+    font-size:14px;
+
+    margin:5px;
 
 }
