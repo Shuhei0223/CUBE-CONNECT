@@ -245,66 +245,83 @@ input{
 
 
 /* =========================
-   スマホ
+   スマホ 小型メニュー
 ========================= */
+
+@media(max-width:786px){
+
+body{
+
+    overflow:auto;
+
+    padding-bottom:10px;
+
+}
+
 
 h1{
 
-    font-size:24px;
+    font-size:20px;
+
+    margin:10px;
 
 }
 
 
 #menu{
 
-    top:65px;
+    top:55px;
 
-    width:100%;
+    width:auto;
 
 }
 
 
 section{
 
-    width:90%;
+    width:280px;
 
-    max-width:350px;
+    padding:8px;
 
-    padding:12px;
+    margin:6px auto;
 
-    margin:10px auto;
-
-    border-radius:15px;
+    border-radius:12px;
 
 }
 
 
 section h2{
 
-    font-size:20px;
+    font-size:18px;
+
+    margin:5px 0;
 
 }
 
 
 section h3{
 
-    font-size:16px;
+    font-size:14px;
+
+    margin:5px 0;
 
 }
 
 
 
-/* ボタン横並び */
+/* ボタン */
 
 button{
 
     width:46%;
 
-    height:42px;
+    height:35px;
 
-    font-size:16px;
+    font-size:14px;
 
-    margin:5px 1%;
+    margin:3px 1%;
+
+    border-radius:8px;
 
 }
 
@@ -321,36 +338,37 @@ input{
 
     width:90%;
 
-    height:35px;
+    height:28px;
 
-    font-size:16px;
+    font-size:14px;
 
 }
 
+
+
+/* メニュー表示ボタン */
 
 #menuToggle{
 
-    width:150px;
+    width:120px;
 
-    height:45px;
+    height:35px;
 
-    font-size:16px;
+    font-size:14px;
+
+    top:10px;
+
+    right:10px;
 
 }
-
-
 
 
 #statusBox{
 
-    position:static;
+    width:280px;
 
-    width:95%;
-
-    max-width:420px;
-
-    margin:20px auto;
+    padding:8px;
 
 }
 
-
+}
