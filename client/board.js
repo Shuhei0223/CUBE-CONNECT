@@ -89,6 +89,18 @@ scene.add(
     directionalLight
 );
 
+// ============================
+// ゲーム設定
+// ============================
+
+let gameMode = "online";
+// online
+// cpu
+
+
+let ruleMode = "free";
+// free
+// gravity
 
 // ============================
 // マス管理
@@ -103,6 +115,7 @@ let myColor = null;
 let myTurn = false;
 
 let gameOver = false;
+
 
 const directions = [
 
