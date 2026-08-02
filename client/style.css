@@ -1,13 +1,6 @@
-
-
-body > section,
-body > h1{
-
-    position:relative;
-
-    z-index:5;
-
-}
+/* =========================
+   全体
+========================= */
 
 body{
 
@@ -15,13 +8,14 @@ body{
 
     min-height:100vh;
 
-    font-family:
-    sans-serif;
+    font-family:sans-serif;
 
     overflow:hidden;
 
 }
 
+
+/* 3D盤面 */
 
 canvas{
 
@@ -39,7 +33,19 @@ canvas{
 
 }
 
+
+/* =========================
+   タイトル
+========================= */
+
+
 h1{
+
+    position:relative;
+
+    z-index:5;
+
+    text-align:center;
 
     color:white;
 
@@ -55,59 +61,64 @@ h1{
 
 }
 
+
+
+/* =========================
+   メニュー
+========================= */
+
+
 #menu{
 
-    position:absolute;
+    position:fixed;
 
-    top:10px;
+    top:80px;
+
+    left:50%;
+
+    transform:translateX(-50%);
 
     z-index:10;
 
 }
 
+
+/* ボックス */
+
 section{
 
-    width:280px;
+    position:relative;
 
-    padding:10px;
+    z-index:5;
 
-    margin:8px;
+    width:300px;
+
+    padding:15px;
+
+    margin:10px;
+
+    box-sizing:border-box;
 
     background:
-    rgba(255,255,255,0.75);
+    rgba(255,255,255,0.8);
 
-    border-radius:12px;
+    border-radius:15px;
 
     box-shadow:
-    0 5px 15px rgba(0,0,0,0.2);
+    0 5px 15px rgba(0,0,0,0.25);
 
 }
 
 
-h1{
 
-    position:relative;
-
-    z-index:5;
-
-    text-align:center;
-
-}
-
-
-section{
-
-    position:relative;
-
-    z-index:5;
-
-}
-
+/* =========================
+   ボタン
+========================= */
 
 
 button{
 
-    width:120px;
+    width:130px;
 
     height:45px;
 
@@ -116,108 +127,6 @@ button{
     font-size:16px;
 
     border-radius:10px;
-
-}
-
-#roomDisplay{
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    margin-top:10px;
-
-}
-
-#statusBox{
-
-    margin-top:20px;
-
-}
-
-input{
-
-    width:200px;
-
-    height:35px;
-
-    font-size:16px;
-
-}
-
-@media(max-width:600px){
-
-
-body{
-
-    justify-content:flex-start;
-
-    padding-top:20px;
-
-    overflow:auto;
-
-}
-
-
-
-h1{
-
-    font-size:24px;
-
-}
-
-
-
-section{
-
-    width:92%;
-
-    padding:18px;
-
-    position:relative;
-
-    box-sizing:border-box;
-
-    border-radius:18px;
-
-    box-shadow:
-    0 6px 20px rgba(0,0,0,0.25);
-
-}
-
-button{
-
-    width:100%;
-
-    height:50px;
-
-    font-size:18px;
-
-    margin:6px 0;
-
-}
-
-
-
-input{
-
-    width:90%;
-
-    height:40px;
-
-    font-size:18px;
-
-}
-
-#menu{
-
-    top:70px;
-
-}
-
-}
-
-button{
 
     background:#333;
 
@@ -235,6 +144,54 @@ button:active{
     transform:scale(0.95);
 
 }
+
+
+
+/* =========================
+   入力
+========================= */
+
+
+input{
+
+    width:200px;
+
+    height:35px;
+
+    font-size:16px;
+
+}
+
+
+
+/* =========================
+   表示
+========================= */
+
+
+#roomDisplay{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+
+#statusBox{
+
+    margin-top:20px;
+
+}
+
+
+
+/* =========================
+   メニュー表示ボタン
+========================= */
+
 
 #menuToggle{
 
@@ -256,22 +213,117 @@ button:active{
 
 }
 
-#menu{
 
-    position:fixed;
-
-    top:80px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    z-index:10;
-
-}
 
 .hidden{
 
     display:none;
+
+}
+
+
+
+
+/* =========================
+   スマホ
+========================= */
+
+
+@media(max-width:600px){
+
+
+body{
+
+    overflow:auto;
+
+    padding-top:20px;
+
+}
+
+
+
+h1{
+
+    font-size:28px;
+
+}
+
+
+
+#menu{
+
+    top:75px;
+
+    width:100%;
+
+}
+
+
+
+section{
+
+    width:94%;
+
+    padding:22px;
+
+    margin:15px auto;
+
+    border-radius:18px;
+
+}
+
+
+
+section h2{
+
+    font-size:24px;
+
+}
+
+
+section h3{
+
+    font-size:20px;
+
+}
+
+
+
+button{
+
+    width:100%;
+
+    height:60px;
+
+    font-size:20px;
+
+    margin:8px 0;
+
+}
+
+
+
+input{
+
+    width:95%;
+
+    height:50px;
+
+    font-size:20px;
+
+}
+
+
+
+#menuToggle{
+
+    width:170px;
+
+    height:55px;
+
+    font-size:20px;
+
+}
+
 
 }
