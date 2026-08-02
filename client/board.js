@@ -666,10 +666,23 @@ function placeLocalStone(data){
     target.userData.empty = false;
 
 
-    board[data.x][data.y][data.z]
-        = data.color;
 
-}
+
+
+    // 勝利判定
+
+    if(checkWin(data)){
+
+    gameOver = true;
+
+
+    alert(
+        data.color + " の勝ち！"
+    );
+
+    }
+
+};
 
 
 
@@ -813,13 +826,12 @@ function getGravityPosition(x,z){
 socket.on(
     "playerColor",
     (color)=>{
-
         myColor = color;
 
 
         // 最初は赤の番
         myTurn =
-            myColor === "red";
+        myColor === "red";
 
 
         console.log(
@@ -831,9 +843,10 @@ socket.on(
         console.log(
             "自分の番:",
             myTurn
-        );
+         );
 
-    }
+
+    }   
 );
 
 socket.on(
@@ -875,11 +888,11 @@ socket.on(
 
         const target =
             cellObjects.find(
-                (cell)=>
-                    cell.userData.x === data.x &&
-                    cell.userData.y === data.y &&
-                    cell.userData.z === data.z
-            );
+            (cell)=>
+            cell.userData.x === data.x &&
+            cell.userData.y === data.y &&
+            cell.userData.z === data.z
+        );
 
 
         if(target){
@@ -889,15 +902,15 @@ socket.on(
                 target.userData.sphere;
 
 
-sphere.material =
- new THREE.MeshStandardMaterial({
+            sphere.material =
+            new THREE.MeshStandardMaterial({
 
-                    color:
-                        data.color === "red"
-                        ? 0xff0000
-                        : 0x0000ff
+                color:
+                data.color === "red"
+                ? 0xff0000
+                : 0x0000ff
 
-                });
+            });
 
 
             target.userData.empty =
@@ -906,6 +919,17 @@ sphere.material =
 
             board[data.x][data.y][data.z] =
                 data.color;
+
+if(checkWin(data)){
+
+    gameOver = true;
+
+    alert(
+        data.color + " の勝ち！"
+    );
+
+}
+
 
         }
 
