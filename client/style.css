@@ -248,29 +248,16 @@ input{
    スマホ
 ========================= */
 
-@media (max-width:768px){
-
-body{
-
-    overflow:auto;
-
-    padding-bottom:20px;
-
-}
-
-
 h1{
 
-    font-size:28px;
-
-    margin-top:15px;
+    font-size:24px;
 
 }
 
 
 #menu{
 
-    top:75px;
+    top:65px;
 
     width:100%;
 
@@ -279,42 +266,45 @@ h1{
 
 section{
 
-    width:95%;
+    width:90%;
 
-    max-width:420px;
+    max-width:350px;
 
-    padding:25px;
+    padding:12px;
 
-    border-radius:20px;
+    margin:10px auto;
+
+    border-radius:15px;
 
 }
 
 
 section h2{
 
-    font-size:26px;
+    font-size:20px;
 
 }
 
 
 section h3{
 
-    font-size:20px;
+    font-size:16px;
 
 }
 
 
-/* 横並び */
+
+/* ボタン横並び */
 
 button{
 
     width:46%;
 
-    height:60px;
+    height:42px;
 
-    font-size:20px;
+    font-size:16px;
 
-    margin:8px 2%;
+    margin:5px 1%;
 
 }
 
@@ -329,24 +319,26 @@ button{
 
 input{
 
-    width:96%;
+    width:90%;
 
-    height:50px;
+    height:35px;
 
-    font-size:20px;
+    font-size:16px;
 
 }
 
 
 #menuToggle{
 
-    width:200px;
+    width:150px;
 
-    height:60px;
+    height:45px;
 
-    font-size:20px;
+    font-size:16px;
 
 }
+
+
 
 
 #statusBox{
@@ -361,15 +353,4 @@ input{
 
 }
 
-}
 
-
-
-
-@media(max-width:600px){
-
-body{
-    background:red;
-}
-
-}
