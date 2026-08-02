@@ -785,50 +785,69 @@ function findWinningMove(color){
 
     for(let x=0;x<4;x++){
 
-        for(let y=0;y<4;y++){
-
-            for(let z=0;z<4;z++){
+        for(let z=0;z<4;z++){
 
 
-                let checkY = y;
+            let yList=[];
 
 
-                if(ruleMode === "gravity"){
+            // 重力あり
+            if(ruleMode === "gravity"){
 
-                    checkY =
+
+                const y =
                     getGravityPosition(
                         x,
                         z
                     );
 
 
-                    if(checkY !== y){
+                if(y !== -1){
 
-                        y = y;
-
-                    }
+                    yList.push(y);
 
                 }
 
 
-                if(board[x][checkY][z] === null){
+            }
+            // 自由配置
+            else{
 
 
-                    board[x][checkY][z] = color;
+                for(let y=0;y<4;y++){
+
+                    yList.push(y);
+
+                }
+
+            }
+
+
+
+            for(const y of yList){
+
+
+                if(board[x][y][z] === null){
+
+
+                    board[x][y][z] = color;
+
 
 
                     const win =
                         checkWin({
 
                             x:x,
-                            y:checkY,
+                            y:y,
                             z:z,
                             color:color
 
                         });
 
 
-                    board[x][checkY][z] = null;
+
+                    board[x][y][z] = null;
+
 
 
                     if(win){
@@ -836,7 +855,7 @@ function findWinningMove(color){
                         return {
 
                             x:x,
-                            y:checkY,
+                            y:y,
                             z:z
 
                         };
@@ -847,6 +866,7 @@ function findWinningMove(color){
 
 
             }
+
 
         }
 
