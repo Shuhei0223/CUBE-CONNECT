@@ -8,14 +8,16 @@ body{
 
     min-height:100vh;
 
-    font-family:sans-serif;
-
     overflow:hidden;
+
+    font-family:sans-serif;
 
 }
 
 
-/* 3D盤面 */
+/* =========================
+   3D盤面
+========================= */
 
 canvas{
 
@@ -38,7 +40,6 @@ canvas{
    タイトル
 ========================= */
 
-
 h1{
 
     position:relative;
@@ -49,24 +50,24 @@ h1{
 
     color:white;
 
-    background:
-    rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.55);
 
-    padding:8px 20px;
+    padding:10px 24px;
 
     border-radius:15px;
 
-    text-shadow:
-    0 2px 5px black;
+    text-shadow:0 2px 5px black;
+
+    width:max-content;
+
+    margin:15px auto;
 
 }
-
 
 
 /* =========================
    メニュー
 ========================= */
-
 
 #menu{
 
@@ -83,38 +84,44 @@ h1{
 }
 
 
-/* ボックス */
+/* =========================
+   ボックス
+========================= */
 
 section{
 
-    position:relative;
-
-    z-index:5;
-
     width:300px;
+
+    margin:10px auto;
 
     padding:15px;
 
-    margin:10px;
-
     box-sizing:border-box;
 
-    background:
-    rgba(255,255,255,0.8);
+    background:rgba(255,255,255,0.82);
 
     border-radius:15px;
 
-    box-shadow:
-    0 5px 15px rgba(0,0,0,0.25);
+    box-shadow:0 5px 15px rgba(0,0,0,0.25);
 
 }
 
+section h2{
+
+    margin-top:0;
+
+}
+
+section h3{
+
+    margin-bottom:8px;
+
+}
 
 
 /* =========================
    ボタン
 ========================= */
-
 
 button{
 
@@ -124,7 +131,7 @@ button{
 
     margin:5px;
 
-    font-size:16px;
+    border:none;
 
     border-radius:10px;
 
@@ -132,66 +139,80 @@ button{
 
     color:white;
 
-    border:none;
+    font-size:16px;
 
     cursor:pointer;
 
+    transition:.15s;
+
 }
 
+button:hover{
+
+    background:#555;
+
+}
 
 button:active{
 
-    transform:scale(0.95);
+    transform:scale(.96);
 
 }
-
 
 
 /* =========================
    入力
 ========================= */
 
-
 input{
 
     width:200px;
 
-    height:35px;
+    height:36px;
 
     font-size:16px;
 
-}
+    padding:5px 8px;
 
+    box-sizing:border-box;
+
+}
 
 
 /* =========================
    表示
 ========================= */
 
-
 #roomDisplay{
+
+    margin-top:10px;
 
     font-size:18px;
 
     font-weight:bold;
 
-    margin-top:10px;
+    word-break:break-all;
 
 }
-
 
 #statusBox{
 
-    margin-top:20px;
+    position:fixed;
+
+    left:15px;
+
+    bottom:15px;
+
+    z-index:8;
+
+    width:260px;
 
 }
-
 
 
 /* =========================
    メニュー表示ボタン
 ========================= */
-
 
 #menuToggle{
 
@@ -203,17 +224,18 @@ input{
 
     z-index:20;
 
-    width:160px;
+    width:180px;
 
-    height:50px;
+    height:55px;
 
     font-size:18px;
-
-    border-radius:12px;
 
 }
 
 
+/* =========================
+   非表示
+========================= */
 
 .hidden{
 
@@ -222,32 +244,28 @@ input{
 }
 
 
-
-
 /* =========================
    スマホ
 ========================= */
 
-
-@media(max-width:600px){
-
+@media (max-width:600px){
 
 body{
 
     overflow:auto;
 
-    padding-top:20px;
+    padding-bottom:20px;
 
 }
-
 
 
 h1{
 
     font-size:28px;
 
-}
+    margin-top:15px;
 
+}
 
 
 #menu{
@@ -259,24 +277,22 @@ h1{
 }
 
 
-
 section{
 
-    width:96%;
+    width:95%;
 
-    padding:30px;
+    max-width:420px;
 
-    margin:18px auto;
+    padding:25px;
 
-    border-radius:22px;
+    border-radius:20px;
 
 }
 
 
-
 section h2{
 
-    font-size:24px;
+    font-size:26px;
 
 }
 
@@ -288,24 +304,32 @@ section h3{
 }
 
 
+/* 横並び */
 
 button{
 
-    width:45%;
+    width:46%;
 
-    height:55px;
+    height:60px;
 
     font-size:20px;
 
-    margin:8px 1%;
+    margin:8px 2%;
 
 }
 
 
+#createRoom,
+#joinRoom{
+
+    width:96%;
+
+}
+
 
 input{
 
-    width:95%;
+    width:96%;
 
     height:50px;
 
@@ -314,29 +338,26 @@ input{
 }
 
 
-
 #menuToggle{
 
-    width:170px;
+    width:200px;
 
-    height:55px;
+    height:60px;
 
     font-size:20px;
 
 }
 
 
-}
+#statusBox{
 
-@media(max-width:600px){
+    position:static;
 
-section button{
+    width:95%;
 
-    width:48% !important;
+    max-width:420px;
 
-    display:inline-block !important;
-
-    margin:5px 0;
+    margin:20px auto;
 
 }
 
