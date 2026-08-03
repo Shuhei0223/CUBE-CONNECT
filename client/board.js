@@ -1358,3 +1358,76 @@ window.addEventListener(
 
     }
 );
+
+
+// ============================
+// ゲームリセット
+// ============================
+
+function resetGame(){
+
+    gameOver = false;
+
+    myTurn = true;
+
+
+    // 盤面データ初期化
+
+    for(let x = 0; x < 4; x++){
+
+        for(let y = 0; y < 4; y++){
+
+            for(let z = 0; z < 4; z++){
+
+                board[x][y][z] = null;
+
+            }
+
+        }
+
+    }
+
+
+    // 石を白に戻す
+
+    for(const cell of cellObjects){
+
+        const sphere =
+            cell.userData.sphere;
+
+
+        sphere.material =
+        new THREE.MeshStandardMaterial({
+
+            color:0xffffff,
+
+            metalness:0.15,
+
+            roughness:0.25
+
+        });
+
+
+        cell.userData.empty = true;
+
+    }
+
+
+    console.log(
+        "ゲームリセット"
+    );
+
+}
+
+
+
+document
+.getElementById("resetGame")
+.addEventListener(
+    "click",
+    ()=>{
+
+        resetGame();
+
+    }
+);
