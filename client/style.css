@@ -250,13 +250,15 @@ input{
 
 #resetGame{
 
-    width:100%;
+    width:80%;
 
-    height:36px;
+    height:24px;
 
-    margin-top:8px;
+    margin:8px auto;
 
-    font-size:14px;
+    display:block;
+
+    font-size:10px;
 
 }
 
@@ -373,7 +375,7 @@ input{
 
 
 #status{
-    
+
     text-align:center;
 
     font-size:11px;
