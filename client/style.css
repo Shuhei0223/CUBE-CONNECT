@@ -209,6 +209,18 @@ input{
 
 }
 
+#statusBox h2{
+
+    font-size:15px;
+
+}
+
+#status{
+
+    text-align:center;
+   
+}
+
 
 /* =========================
    メニュー表示ボタン
@@ -258,7 +270,7 @@ input{
 
     display:block;
 
-    font-size:10px;
+    font-size:12px;
 
 }
 
@@ -367,9 +379,9 @@ input{
 
 #statusBox h2{
 
-    font-size:14px;
+    font-size:13px;
 
-    margin:3px 0;
+    margin:5px 0;
 
 }
 
